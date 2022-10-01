@@ -27,8 +27,8 @@ server.listen(port, function () {
 })
 
 app.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API' })
-  })
+  response.json({ info: 'Node.js, Express, and Postgres API' })
+})
 
 app.post('/api/info/consulta', dbConsulta.consulta);
 
