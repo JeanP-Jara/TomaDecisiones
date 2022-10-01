@@ -1,0 +1,16 @@
+{
+  "name": "toma_de_decisiones",
+  "version": "1.0.0",
+  "description": "Toma de decisiones Pro",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jean",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "pg": "^7.18.1"
+  }
+}
