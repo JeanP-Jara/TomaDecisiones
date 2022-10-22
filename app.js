@@ -35,6 +35,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single('DA');
 
 const dbConsulta = require('./dal/consulta')
+const dbSolicitud = require('./dal/solicitud')
 
 
 server.listen(port, function () {
@@ -47,8 +48,13 @@ app.get('/', (request, response) => {
 })
 
 app.post('/api/info/get', dbConsulta.get);
-app.post('/api/info/consulta', dbConsulta.consulta);
-app.post('/api/info/uploadfile', function (req, res) {
+app.post('/api/info/consulta', dbConsulta.consulta); 
+app.post('/api/solicutud/registrarSolicitud', dbSolicitud.registrarSolicitud); 
+app.post('/api/solicutud/saveFile', dbSolicitud.saveFile);
+
+
+/*CARGA ARCHIVOS AL SERVIDOR*/
+app.post('/api/solicutud/uploadfile', function (req, res) {
   let archivo = req.query.carpeta;
   console.log(archivo)
   let rutaCorta = archivo + "/";
@@ -87,5 +93,4 @@ app.post('/api/info/uploadfile', function (req, res) {
     }
   });
 })
-
 
