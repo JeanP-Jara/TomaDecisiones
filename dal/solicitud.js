@@ -16,11 +16,11 @@ const registrarSolicitud = (request, response) => {
 
     let cadena = 'do $$ \n\r' +
         '   begin \n\r' +
-        '       if(exists(select n_id_solicitud_cliente from solicitud_cliente where n_id_solicitud_cliente =\'' + n_id_solicitud_cliente + '\')) then \n\r' +
-        '           update solicitud_cliente set c_nombre = \'' + c_nombre + '\', n_id_tipo_doc=' + n_id_tipo_doc + ', c_documento=\'' + c_documento + '\', c_direccion=' + c_direccion + ', d_fechamodi= now() where n_id_solicitud_cliente = ' + n_id_solicitud_cliente + '; \n\r' +
+        '       if(exists(select n_id_solicitud_cliente from solicitud_cliente where n_id_solicitud_cliente =' + n_id_solicitud_cliente + ')) then \n\r' +
+        '           update solicitud_cliente set c_nombre = \'' + c_nombre + '\', n_id_tipo_doc=' + n_id_tipo_doc + ', c_documento=\'' + c_documento + '\', c_direccion=\'' + c_direccion + '\', d_fechamodi= now() where n_id_solicitud_cliente = ' + n_id_solicitud_cliente + '; \n\r' +
         '       else \n\r' +
-        '           insert into solicitud_cliente(n_id_solicitud_cliente, c_nombre, n_id_tipo_doc, c_documento, c_direccion, c_codigo, n_borrado, d_fechacrea) \n\r' +
-        '           values (default,\'' + c_nombre + '\',' + n_id_tipo_doc + ',\'' + c_documento + '\', \'' + c_direccion + '\', \'' + c_codigo + '\', 0, now() ); \n\r' +
+        '           insert into solicitud_cliente(n_id_solicitud_cliente, c_direccion, n_id_tipo_doc, c_documento, c_nombre, c_codigo, n_borrado, d_fechacrea) \n\r' +
+        '           values (default,\'' + c_direccion + '\',' + n_id_tipo_doc + ',\''+ c_documento +'\', \'' + c_nombre + '\', \'' + c_codigo + '\', 0, now() ); \n\r' +
         '       end if; \n\r' +
         '   end \n\r' +
         '$$';
