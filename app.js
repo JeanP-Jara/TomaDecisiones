@@ -36,6 +36,7 @@ var upload = multer({ storage: storage }).single('DA');
 
 const dbConsulta = require('./dal/consulta')
 const dbSolicitud = require('./dal/solicitud')
+const dbSeguridad = require('./dal/seguridad')
 
 
 server.listen(port, function () {
@@ -49,8 +50,12 @@ app.get('/', (request, response) => {
 
 app.post('/api/info/get', dbConsulta.get);
 app.post('/api/info/consulta', dbConsulta.consulta); 
+
 app.post('/api/solicutud/registrarSolicitud', dbSolicitud.registrarSolicitud); 
-app.post('/api/solicutud/saveFile', dbSolicitud.saveFile);
+app.post('/api/solicutud/saveFile', dbSolicitud.saveFile);  
+app.post('/api/solicutud/getSolicitudes', dbSolicitud.getSolicitudes);
+
+app.post('/api/seguridad/login', dbSeguridad.login);
 
 
 /*CARGA ARCHIVOS AL SERVIDOR*/
